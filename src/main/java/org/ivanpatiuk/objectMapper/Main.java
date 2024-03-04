@@ -1,4 +1,4 @@
-package org.ivanpatiuk;
+package org.ivanpatiuk.objectMapper;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ * This class show how to process mapping object with generic type fields
+ */
 public abstract class Main {
 
     public static void main(String[] args) {
