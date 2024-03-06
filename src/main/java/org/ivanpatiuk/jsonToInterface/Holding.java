@@ -1,8 +1,10 @@
 package org.ivanpatiuk.jsonToInterface;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 interface Holding {
-    String getTicker();
-    BigDecimal getValue();
+    LocalDate getEffectiveAsOfDate();
+    LocalDateTime getAsOfDate();
 }
