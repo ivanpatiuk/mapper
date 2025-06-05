@@ -33,11 +33,15 @@ public class InterfaceAdapterFactory<T> implements TypeAdapterFactory {
                                 String jsonProperty = method.getName().substring(3);
                                 jsonProperty = Character.toLowerCase(jsonProperty.charAt(0)) + jsonProperty.substring(1);
 
-                                if (object.has(jsonProperty)) {
-                                    return gson.fromJson(object.get(jsonProperty), method.getGenericReturnType());
+                                @Override
+                                public Object invoke(Object proxy1, Method method, Object[] args) {
+                                    String jsonProperty = method.getName().substring(3);
+                                    if (!object.has(jsonProperty)) {
+                                        jsonProperty = Character.toLowerCase(jsonProperty.charAt(0))
+                                                + jsonProperty.substring(1);
+                                    }
+                                    return gson.fromJson(object.get(jsonProperty), method.getReturnType());
                                 }
-                                return null;
-                            }
                         });
             }
         };
