@@ -13,6 +13,7 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import com.google.gson.FieldNamingPolicy;
 
 /**
  * This class show how to create interface instance from json using gson with type adapter
@@ -24,6 +25,7 @@ public class Main {
         String json = "{ \"effectiveAsOfDate\": \"2022-02-02\", \"asOfDate\": \"2011-12-03T10:15:30\"}";
 
         Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES) // json field 'fund_list' will be able to be parsed into object field 'fundList'
                 .registerTypeAdapterFactory(new InterfaceAdapterFactory<>())
                 .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
