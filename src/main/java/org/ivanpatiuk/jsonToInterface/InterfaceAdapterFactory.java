@@ -7,11 +7,13 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.lang.reflect.*;
+import java.util.List;
 
 public class InterfaceAdapterFactory<T> implements TypeAdapterFactory {
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-        if (!type.getRawType().isInterface()) {
+        // or any other interface like Set
+        if (!type.getRawType().isInterface() || List.isAssignableFrom(type.getRawType())) {
             return null;
         }
         return new TypeAdapter<>() {
